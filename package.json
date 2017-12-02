@@ -1,0 +1,13 @@
+{
+  "name": "github-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/myroslavahaidash/github-search.git",
+  "author": "Myroslava Haidash <myroslava.haidash@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "angular-ui-bootstrap": "^2.5.6",
+    "bootstrap": "^3.3.7"
+  }
+}
