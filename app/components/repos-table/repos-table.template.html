@@ -1,0 +1,13 @@
+<table class="table">
+    <tr ng-repeat="repository in $ctrl.results">
+        <td>{{repository.name}}</td>
+        <td>{{repository.owner.login}}</td>
+        <td>{{repository.stargazers_count}}</td>
+        <td>{{repository.open_issues_count}}</td>
+        <td>
+            <img ng-src="{{repository.owner.avatar_url}}">
+        </td>
+        <td>{{repository.private}}</td>
+        <td>{{repository.html_url}}</td>
+    </tr>
+</table>

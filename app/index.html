@@ -1,13 +1,17 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="githubSearchApp">
 <head>
     <meta charset="utf-8">
     <title>My HTML File</title>
     <script src="../node_modules/angular/angular.js"></script>
+    <script src="app.module.js"></script>
+    <script src="components/repos-table/repos-table.component.js"></script>
+    <script src="services/github-client.service.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
 
-<p>Nothing here {{'yet' + '!'}}</p>
+<repos-table></repos-table>
 
 </body>
 </html>
