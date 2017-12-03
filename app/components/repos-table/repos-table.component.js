@@ -10,10 +10,13 @@ angular.module('githubSearchApp').component('reposTable', {
         this.searchQuery = '';
 
         this._loadData = function() {
+            var maxAllowedGithubResults = 1000;
+
             if(this.searchQuery){
                 githubClient.getRepos(this.searchQuery, this.currentPage, this.itemsPerPage).then(function(response) {
                     self.results = response.data.items;
-                    self.totalItems = response.data.total_count <= 1000 ? response.data.total_count : 1000;
+                    self.totalItems =
+                        response.data.total_count <= maxAllowedGithubResults ? response.data.total_count : maxAllowedGithubResults;
                 });
             } else {
                 this.results = [];
