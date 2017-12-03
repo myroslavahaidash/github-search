@@ -1,1 +1,1 @@
-angular.module('githubSearchApp',[]);
+angular.module('githubSearchApp', ['ui.bootstrap']);

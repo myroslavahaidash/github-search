@@ -1,3 +1,6 @@
+<input type="text" class="form-control" placeholder="Search repository" ng-change="$ctrl.onSearchChange()"
+       ng-model="$ctrl.searchQuery" ng-model-options="{ debounce: 1000 }" >
+
 <table class="table">
     <tr ng-repeat="repository in $ctrl.results">
         <td>{{repository.name}}</td>
@@ -5,9 +8,13 @@
         <td>{{repository.stargazers_count}}</td>
         <td>{{repository.open_issues_count}}</td>
         <td>
-            <img ng-src="{{repository.owner.avatar_url}}">
+            <img ng-src="{{repository.owner.avatar_url}}" style="width: 100px;">
         </td>
         <td>{{repository.private}}</td>
         <td>{{repository.html_url}}</td>
     </tr>
 </table>
+
+<ul ng-show="$ctrl.totalItems > 10" uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage"
+    ng-change="$ctrl.onPageChange()" max-size="5" class="pagination-sm" boundary-links="true"
+    items-per-page="$ctrl.itemsPerPage"></ul>
