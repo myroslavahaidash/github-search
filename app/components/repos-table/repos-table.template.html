@@ -3,38 +3,47 @@
            ng-model="$ctrl.searchQuery" ng-model-options="{ debounce: 700 }" >
 
     <div class="results-table">
-        <table class="table">
-            <tr ng-repeat="repository in $ctrl.results" class="repo">
-                <td class="repo-avatar hidden-xs">
-                    <img ng-src="{{repository.owner.avatar_url}}">
-                </td>
-                <td>
-                    <div class="repo-header">
-                        <span class="repo-name">{{repository.name}}</span>
+        <div ng-show="!$ctrl.error">
+            <div ng-show="!$ctrl.searchQuery && !$ctrl.isLoading" class="empty-screen"></div>
+            <div ng-show="$ctrl.searchQuery && !$ctrl.results.length && !$ctrl.isLoading" class="nothing-found">
+                Nothing found
+            </div>
+            <div ng-show="$ctrl.isLoading" class="loading">Loading...</div>
+            <table class="table" ng-show="$ctrl.results.length && !$ctrl.isLoading">
+                <tr ng-repeat="repository in $ctrl.results" class="repo">
+                    <td class="repo-avatar hidden-xs">
+                        <img ng-src="{{::repository.owner.avatar_url}}">
+                    </td>
+                    <td>
+                        <div class="repo-header">
+                            <span class="repo-name">{{::repository.name}}</span>
                         <span class="label hidden-xs {{repository.private ? 'label-primary' : 'label-success'}}">
-                            {{repository.private ? 'Private' : 'Public'}}
+                            {{::repository.private ? 'Private' : 'Public'}}
                         </span>
-                    </div>
-                    <div class="repo-author">by {{repository.owner.login}}</div>
-                    <div><a ng-href="{{repository.html_url}}" target="_blank">See on GitHub</a></div>
-                </td>
-                <td class="repo-counter">
+                        </div>
+                        <div class="repo-author">by {{::repository.owner.login}}</div>
+                        <div><a ng-href="{{::repository.html_url}}" target="_blank">See on GitHub</a></div>
+                    </td>
+                    <td class="repo-counter">
                     <span title="Stars">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        {{repository.stargazers_count}}
+                        {{::repository.stargazers_count}}
                     </span>
-                </td>
-                <td class="repo-counter hidden-xs">
+                    </td>
+                    <td class="repo-counter hidden-xs">
                     <span title="Issues">
                         <i class="fa fa-bug" aria-hidden="true"></i>
-                        {{repository.open_issues_count}}
+                        {{::repository.open_issues_count}}
                     </span>
-                </td>
-            </tr>
-        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div ng-show="$ctrl.error" class="error">Something went wrong. Please try again later</div>
     </div>
 
-    <ul ng-show="$ctrl.totalItems > 10" uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage"
+    <ul ng-show="$ctrl.totalItems > 10 && $ctrl.searchQuery" uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.currentPage"
         ng-change="$ctrl.onPageChange()" max-size="5" class="pagination-sm table-pagination" boundary-links="true"
         items-per-page="$ctrl.itemsPerPage">
     </ul>
