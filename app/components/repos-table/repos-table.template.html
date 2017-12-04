@@ -12,7 +12,7 @@
             <table class="table" ng-show="$ctrl.results.length && !$ctrl.isLoading">
                 <tr ng-repeat="repository in $ctrl.results" class="repo">
                     <td class="repo-avatar hidden-xs">
-                        <img ng-src="{{::repository.owner.avatar_url}}">
+                        <img ng-show="repository.owner.avatar_url" ng-src="{{::repository.owner.avatar_url}}">
                     </td>
                     <td>
                         <div class="repo-header">
