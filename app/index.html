@@ -2,24 +2,19 @@
 <html lang="en" ng-app="githubSearchApp">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>GitHub Search</title>
 
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
-    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="components/repos-table/repos-table.css">
+    <link rel="stylesheet" href="dist/css/vendor.css">
+    <link rel="stylesheet" href="dist/css/app.min.css">
 </head>
 
 <body>
     <repos-table></repos-table>
 </body>
 
-<script src="../node_modules/angular/angular.js"></script>
-<script src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
-
-<script src="app.module.js"></script>
-<script src="components/repos-table/repos-table.component.js"></script>
-<script src="services/github-client.service.js"></script>
+<script src="dist/js/vendor.js"></script>
+<script src="dist/js/app.min.js"></script>
 
 </html>
